@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy New Year</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #0b0f29, #111);
+      color: #fff;
+      overflow-x: hidden;
+      transition: background 1s ease;
+    }
+    body.day-mode {
+      background: linear-gradient(to bottom, #ffecd2, #fcb69f);
+      color: #222;
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px;
+    }
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #f8e9a1;
+      text-shadow: 0 0 15px #f8e9a1;
+      animation: glowPulse 3s infinite ease-in-out;
+    }
+
+    /* Countdown */
+    .countdown {
+      font-size: 2rem;
+      margin-top: 20px;
+    }
+
+    /* Fade-In Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeIn 1.5s ease forwards; }
+
+    /* Glow Pulse */
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 10px gold; }
+      50% { text-shadow: 0 0 30px gold; }
+      100% { text-shadow: 0 0 10px gold; }
+    }
+
+    /* Fireworks Canvas */
+    .fireworks-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Lanterns */
+    .lantern {
+      position: absolute;
+      width: 40px;
+      animation: floatLanterns 12s linear infinite;
+    }
+    @keyframes floatLanterns {
+      from { transform: translateY(100vh); opacity: 0; }
+      to { transform: translateY(-20vh); opacity: 1; }
+    }
+
+    /* Balloons */
+    .balloon {
+      position: absolute;
+      width: 60px;
+      animation: floatBalloon 14s linear infinite;
+    }
+    @keyframes floatBalloon {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-20vh); }
+    }
+
+    /* Twinkle Stars */
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite alternate;
+    }
+    @keyframes twinkle {
+      0% { opacity: .3; }
+      50% { opacity: 1; }
+      100% { opacity: .3; }
+    }
+
+    /* Message Section */
+    .message-section {
+      max-width: 800px;
+      margin: 100px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    /* Personalized Greeting */
+    #nameInput {
+      padding: 10px 15px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    /* Gift Boxes */
+    .gift-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 50px;
+    }
+    .gift {
+      width: 100px;
+      height: 100px;
+      background: url('https://i.imgur.com/0Z8Fq0S.png');
+      background-size: cover;
+      cursor: pointer;
+      transition: transform .3s;
+    }
+    .gift:hover {
+      transform: scale(1.2) rotate(5deg);
+      filter: drop-shadow(0 0 10px gold);
+    }
+    .gift-message {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      min-height: 30px;
+    }
+
+    /* Music Button */
+    #musicBtn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      background: #f8e9a1;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 20px;
+      transition: .3s;
+    }
+    #musicBtn:hover {
+      transform: scale(1.1);
+      background: gold;
+    }
+
+    /* Photo Slider */
+    .slider {
+      margin: 60px auto;
+      width: 80%;
+      overflow: hidden;
+      border-radius: 15px;
+    }
+    .slides {
+      display: flex;
+      width: 300%;
+      animation: slideShow 12s infinite;
+    }
+    .slides img {
+      width: 100%;
+    }
+    @keyframes slideShow {
+      0% { transform: translateX(0%); }
+      33% { transform: translateX(-100%); }
+      66% { transform: translateX(-200%); }
+      100% { transform: translateX(0%); }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="fireworksCanvas" class="fireworks-container"></canvas>
+
+  <!-- Stars Container -->
+  <div id="stars"></div>
+
+  <!-- Floating Lanterns -->
+  <img src="https://i.imgur.com/H4vGxEP.png" class="lantern" style="left:10%; animation-delay:0s;">
+  <img src="https://i.imgur.com/H4vGxEP.png" class="lantern" style="left:50%; animation-delay:3s;">
+  <img src="https://i.imgur.com/H4vGxEP.png" class="lantern" style="left:80%; animation-delay:6s;">
+
+  <!-- Balloons -->
+  <img src="https://i.imgur.com/1M7bZIu.png" class="balloon" style="left:15%; animation-delay:1s;">
+  <img src="https://i.imgur.com/1M7bZIu.png" class="balloon" style="left:70%; animation-delay:4s;">
+
+  <header class="fade-in">
+    <h1 id="title">✨ Happy New Year 2025 ✨</h1>
+    <div class="countdown" id="countdown">Loading countdown...</div>
+
+    <!-- Personalized Greeting -->
+    <div>
+      <input id="nameInput" placeholder="Enter your name...">
+      <button onclick="updateName()">Show Greeting</button>
+    </div>
+  </header>
+
+  <!-- Photo Slider -->
+  <div class="slider fade-in">
+    <div class="slides">
+      <img src="https://i.imgur.com/6Iej2cT.jpeg" />
+      <img src="https://i.imgur.com/6Iej2cT.jpeg" />
+      <img src="https://i.imgur.com/6Iej2cT.jpeg" />
+    </div>
+  </div>
+
+  <section class="message-section fade-in">
+    <h2>Warm Wishes</h2>
+    <p>Wishing you joy, growth, and new beginnings. May 2025 fill your life with love and success.</p>
+
+    <!-- Music Toggle -->
+    <button id="musicBtn" onclick="toggleMusic()">Play Music</button>
+    <audio id="bgMusic" loop>
+      <source src="https://cdn.pixabay.com/download/audio/2022/10/16/audio_4d88afb1c8.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Gift Boxes -->
+    <div class="gift-container">
+      <div class="gift" onclick="openGift(0)"></div>
+      <div class="gift" onclick="openGift(1)"></div>
+      <div class="gift" onclick="openGift(2)"></div>
+    </div>
+    <div class="gift-message" id="giftMsg"></div>
+  </section>
+
+  <script>
+    /* Personalized Name */
+    function updateName() {
+      const name = document.getElementById('nameInput').value;
+      document.getElementById('title').innerHTML = `✨ Happy New Year, ${name}! ✨`;
+    }
+
+    /* Music */
+    function toggleMusic() {
+      const music = document.getElementById('bgMusic');
+      if (music.paused) music.play(); else music.pause();
+    }
+
+    /* Gifts */
+    const giftMessages = [
+      "🎁 May this year bring you endless joy!",
+      "✨ Success and happiness are coming your way!",
+      "🌟 You are loved and appreciated. Happy New Year!"
