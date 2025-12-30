@@ -1,128 +1,23 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Firecracker Reveal - Option A</title>
-<style>
-  body {
-    margin: 0;
-    background: black;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-
-  #firecracker-container {
-    text-align: center;
-    position: relative;
-    z-index: 10;
-  }
-
-  #fuse-btn {
-    padding: 15px 30px;
-    background: #ff0000;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 20px;
-    color: white;
-    transition: 0.3s;
-  }
-  #fuse-btn:hover {
-    transform: scale(1.1);
-  }
-
-  #wish-box {
-    margin-top: 20px;
-    font-size: 26px;
-    opacity: 0;
-    transition: opacity 1.5s;
-  }
-
-  /* FULLSCREEN BOOM FLASH */
-  #flash {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: white;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-  }
-
-  /* Fireworks GIF background */
-  #fireworks-bg {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: url('fireworks.gif') center/cover no-repeat;
-    opacity: 0;
-    transition: opacity 2s;
-    pointer-events: none;
-  }
-</style>
+<title>Happy New Year 2026</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div id="fireworks-bg"></div>
-<div id="flash"></div>
+<canvas id="fireworks"></canvas>
 
-<div id="firecracker-container">
-  <button id="fuse-btn">🔥 Light the Fuse</button>
-  <div id="wish-box"></div>
+<div class="content">
+  <h1 class="title">✨ Happy New Year <span>2026</span> ✨</h1>
+  <button id="explodeBtn">💥 Light the Fuse</button>
+  <div id="wishBox"></div>
 </div>
 
-<audio id="boom-sfx" src="boom.mp3"></audio>
-<audio id="crackle-sfx" src="crackle.mp3"></audio>
+<audio id="boom" src="sounds/boom.mp3"></audio>
 
-<script>
-const wishes = [
-  "May 2026 bring growth, recognition, and new achievements. ✨",
-  "Believe in progress, consistency, and yourself. Let this year be the one where you surprise yourself.🎊",
-  "May this year bring new beginnings, beautiful moments, and deeper connections with those who matter most.🎉",
-  "Wishing you courage to chase your dreams and wisdom to enjoy the journey. Let the lessons of the past guide you toward a brighter future in 2026.🌟",
-  "Cheers to new beginnings! A New Year is a blank chapter. Write a story you’ll be proud of. 🥂",
-  "Your dreams will shine bright this year! Let go of fear and step confidently into the New Year.🌟",
-  "Happy New Year 2026. May your days be bright and your heart content.🍾",
-  "Here’s to a year filled with laughter, love, and positive surprises. Wishing you courage to chase your dreams and wisdom to enjoy the journey.🎆",
-  "Sending love and warmth. Every sunrise in 2026 brings a new chance to grow and succeed. 💛",
-  "New adventures are waiting. Challenges are stepping stones—use them to rise higher in 2026.🎆",
-  "A new year, a new chapter. Make it a masterpiece!🎊"
-];
-
-const button = document.getElementById('fuse-btn');
-const wishBox = document.getElementById('wish-box');
-const fireworksBg = document.getElementById('fireworks-bg');
-const flash = document.getElementById('flash');
-const boomSfx = document.getElementById('boom-sfx');
-const crackleSfx = document.getElementById('crackle-sfx');
-
-button.addEventListener('click', () => {
-  button.disabled = true;
-  button.textContent = "🔥 Fuse Burning...";
-
-  setTimeout(() => {
-    flash.style.opacity = 1;
-    boomSfx.play();
-
-    setTimeout(() => {
-      flash.style.opacity = 0;
-      fireworksBg.style.opacity = 1;
-      crackleSfx.play();
-    }, 200);
-
-    setTimeout(() => {
-      const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
-      wishBox.textContent = randomWish;
-      wishBox.style.opacity = 1;
-    }, 1500);
-
-  }, 2000);
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
