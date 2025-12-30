@@ -1,258 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy New Year</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom, #0b0f29, #111);
-      color: #fff;
-      overflow-x: hidden;
-      transition: background 1s ease;
-    }
-    body.day-mode {
-      background: linear-gradient(to bottom, #ffecd2, #fcb69f);
-      color: #222;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year 2025 ✨</title>
 
-    header {
-      text-align: center;
-      padding: 80px 20px;
-    }
-    h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #f8e9a1;
-      text-shadow: 0 0 15px #f8e9a1;
-      animation: glowPulse 3s infinite ease-in-out;
-    }
+<style>
+/* -------------------------------------------------- */
+/* GLOBAL */
+/* -------------------------------------------------- */
+body {
+  margin: 0;
+  background: #000;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
 
-    /* Countdown */
-    .countdown {
-      font-size: 2rem;
-      margin-top: 20px;
-    }
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 4rem;
+  color: #ffe28a;
+  text-shadow: 0 0 20px #ffcc00;
+  animation: glow 2s infinite alternate ease-in-out;
+}
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ffcc00; }
+  to { text-shadow: 0 0 30px #ffea00; }
+}
 
-    /* Fade-In Animation */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .fade-in { animation: fadeIn 1.5s ease forwards; }
+/* -------------------------------------------------- */
+/* COUNTDOWN */
+/* -------------------------------------------------- */
+#countdown {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
 
-    /* Glow Pulse */
-    @keyframes glowPulse {
-      0% { text-shadow: 0 0 10px gold; }
-      50% { text-shadow: 0 0 30px gold; }
-      100% { text-shadow: 0 0 10px gold; }
-    }
+/* -------------------------------------------------- */
+/* BACKGROUND FIREWORK GIF */
+/* -------------------------------------------------- */
+.bg-gif {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  opacity: 0.25;
+  background: url('https://i.imgur.com/VDz8WcA.gif') center/cover no-repeat;
+}
 
-    /* Fireworks Canvas */
-    .fireworks-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 10;
-    }
+/* -------------------------------------------------- */
+/* SPARKLING BORDER */
+/* -------------------------------------------------- */
+.sparkle-border {
+  border: 3px solid rgba(255,255,255,0.3);
+  padding: 20px;
+  margin: 20px auto;
+  width: fit-content;
+  border-radius: 12px;
+  position: relative;
+  animation: sparkle 2s infinite linear;
+}
+@keyframes sparkle {
+  0% { box-shadow: 0 0 10px #fff; }
+  50% { box-shadow: 0 0 25px #ffcc00; }
+  100% { box-shadow: 0 0 10px #fff; }
+}
 
-    /* Lanterns */
-    .lantern {
-      position: absolute;
-      width: 40px;
-      animation: floatLanterns 12s linear infinite;
-    }
-    @keyframes floatLanterns {
-      from { transform: translateY(100vh); opacity: 0; }
-      to { transform: translateY(-20vh); opacity: 1; }
-    }
+/* -------------------------------------------------- */
+/* GLOWING YEAR */
+/* -------------------------------------------------- */
+.year-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 5rem;
+  font-weight: bold;
+  color: #00eaff;
+  text-shadow: 0 0 20px #00eaff, 0 0 40px #0099ff;
+  animation: pulse 2s infinite alternate;
+}
+@keyframes pulse {
+  from { transform: scale(1); opacity: 0.8; }
+  to { transform: scale(1.1); opacity: 1; }
+}
 
-    /* Balloons */
-    .balloon {
-      position: absolute;
-      width: 60px;
-      animation: floatBalloon 14s linear infinite;
-    }
-    @keyframes floatBalloon {
-      from { transform: translateY(100vh); }
-      to { transform: translateY(-20vh); }
-    }
+/* -------------------------------------------------- */
+/* SNOWFALL */
+/* -------------------------------------------------- */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: white;
+  font-size: 1rem;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  0% { transform: translateY(-10px) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
+}
 
-    /* Twinkle Stars */
-    .star {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      background: white;
-      border-radius: 50%;
-      animation: twinkle 2s infinite alternate;
-    }
-    @keyframes twinkle {
-      0% { opacity: .3; }
-      50% { opacity: 1; }
-      100% { opacity: .3; }
-    }
+/* -------------------------------------------------- */
+/* LANTERNS */
+/* -------------------------------------------------- */
+.lantern {
+  position: fixed;
+  bottom: -100px;
+  width: 40px;
+  opacity: 0.8;
+  animation: riseLantern 12s linear infinite;
+}
+@keyframes riseLantern {
+  0% { transform: translateY(0) scale(0.6); }
+  100% { transform: translateY(-120vh) scale(1); opacity: 0; }
+}
 
-    /* Message Section */
-    .message-section {
-      max-width: 800px;
-      margin: 100px auto;
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      text-align: center;
-    }
+/* -------------------------------------------------- */
+/* FIREWORK PARTICLES */
+/* -------------------------------------------------- */
+.firework {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: white;
+  border-radius: 50%;
+  animation: explode 1s ease-out forwards;
+}
+@keyframes explode {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(20); opacity: 0; }
+}
 
-    /* Personalized Greeting */
-    #nameInput {
-      padding: 10px 15px;
-      margin-top: 10px;
-      border-radius: 10px;
-      border: none;
-      font-size: 1rem;
-    }
+/* -------------------------------------------------- */
+/* FLOATING EMOJIS */
+/* -------------------------------------------------- */
+.emoji {
+  position: fixed;
+  bottom: -50px;
+  font-size: 2rem;
+  animation: floatUp 6s ease-in-out infinite;
+}
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+}
 
-    /* Gift Boxes */
-    .gift-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 50px;
-    }
-    .gift {
-      width: 100px;
-      height: 100px;
-      background: url('https://i.imgur.com/0Z8Fq0S.png');
-      background-size: cover;
-      cursor: pointer;
-      transition: transform .3s;
-    }
-    .gift:hover {
-      transform: scale(1.2) rotate(5deg);
-      filter: drop-shadow(0 0 10px gold);
-    }
-    .gift-message {
-      margin-top: 20px;
-      font-size: 1.3rem;
-      min-height: 30px;
-    }
-
-    /* Music Button */
-    #musicBtn {
-      padding: 10px 20px;
-      border-radius: 10px;
-      border: none;
-      background: #f8e9a1;
-      cursor: pointer;
-      font-size: 1rem;
-      margin-top: 20px;
-      transition: .3s;
-    }
-    #musicBtn:hover {
-      transform: scale(1.1);
-      background: gold;
-    }
-
-    /* Photo Slider */
-    .slider {
-      margin: 60px auto;
-      width: 80%;
-      overflow: hidden;
-      border-radius: 15px;
-    }
-    .slides {
-      display: flex;
-      width: 300%;
-      animation: slideShow 12s infinite;
-    }
-    .slides img {
-      width: 100%;
-    }
-    @keyframes slideShow {
-      0% { transform: translateX(0%); }
-      33% { transform: translateX(-100%); }
-      66% { transform: translateX(-200%); }
-      100% { transform: translateX(0%); }
-    }
-  </style>
+/* -------------------------------------------------- */
+/* SHARE BUTTON */
+/* -------------------------------------------------- */
+.share-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #ffcc00;
+  color: black;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ffcc00;
+  border: none;
+  animation: glowShare 2s infinite alternate;
+}
+@keyframes glowShare {
+  from { box-shadow: 0 0 10px #ffcc00; }
+  to { box-shadow: 0 0 25px #ffffff; }
+}
+</style>
 </head>
+
 <body>
+<div class="bg-gif"></div>
 
-  <canvas id="fireworksCanvas" class="fireworks-container"></canvas>
+<h1>✨ Happy New Year ✨</h1>
+<div id="countdown"></div>
+<div class="year-text">2025</div>
 
-  <!-- Stars Container -->
-  <div id="stars"></div>
+<div class="sparkle-border" id="wishBox"></div>
 
-  <!-- Floating Lanterns -->
-  <img src="https://i.imgur.com/H4vGxEP.png" class="lantern" style="left:10%; animation-delay:0s;">
-  <img src="https://i.imgur.com/H4vGxEP.png" class="lantern" style="left:50%; animation-delay:3s;">
-  <img src="https://i.imgur.com/H4vGxEP.png" class="lantern" style="left:80%; animation-delay:6s;">
+<button class="share-btn" onclick="shareGreeting()">📤 Share</button>
 
-  <!-- Balloons -->
-  <img src="https://i.imgur.com/1M7bZIu.png" class="balloon" style="left:15%; animation-delay:1s;">
-  <img src="https://i.imgur.com/1M7bZIu.png" class="balloon" style="left:70%; animation-delay:4s;">
+<script>
+/* RANDOM WISH */
+const wishes = [
+  "May 2026 bring growth, recognition, and new achievements. ✨",
+  "Believe in progress, consistency, and yourself. Let this year be the one where you surprise yourself.🎊",
+  "May this year bring new beginnings, beautiful moments, and deeper connections with those who matter most.🎉",
+  "Wishing you courage to chase your dreams and wisdom to enjoy the journey. Let the lessons of the past guide you toward a brighter future in 2026.🌟",
+  "Cheers to new beginnings! A New Year is a blank chapter. Write a story you’ll be proud of. 🥂",
+  "Your dreams will shine bright this year! Let go of fear and step confidently into the New Year.🌟",
+  "Happy New Year 2026. May your days be bright and your heart content.🍾",
+  "Here’s to a year filled with laughter, love, and positive surprises. Wishing you courage to chase your dreams and wisdom to enjoy the journey.🎆",
+  "Sending love and warmth. Every sunrise in 2026 brings a new chance to grow and succeed. 💛",
+  "New adventures are waiting. Challenges are stepping stones—use them to rise higher in 2026.🎆",
+  "A new year, a new chapter. Make it a masterpiece!🎊",
+  "May every challenge turn into opportunity this year. Success, peace & happiness to you 🎉"
+];
+document.getElementById("wishBox").innerText =
+  wishes[Math.floor(Math.random() * wishes.length)];
 
-  <header class="fade-in">
-    <h1 id="title">✨ Happy New Year 2025 ✨</h1>
-    <div class="countdown" id="countdown">Loading countdown...</div>
+/* AUTO FIREWORKS */
+function launchFirework(x, y) {
+  for (let i = 0; i < 25; i++) {
+    let f = document.createElement("div");
+    f.classList.add("firework");
+    document.body.appendChild(f);
 
-    <!-- Personalized Greeting -->
-    <div>
-      <input id="nameInput" placeholder="Enter your name...">
-      <button onclick="updateName()">Show Greeting</button>
-    </div>
-  </header>
+    let dx = (Math.random() - 0.5) * 300;
+    let dy = (Math.random() - 0.5) * 300;
 
-  <!-- Photo Slider -->
-  <div class="slider fade-in">
-    <div class="slides">
-      <img src="https://i.imgur.com/6Iej2cT.jpeg" />
-      <img src="https://i.imgur.com/6Iej2cT.jpeg" />
-      <img src="https://i.imgur.com/6Iej2cT.jpeg" />
-    </div>
-  </div>
+    f.style.left = x + "px";
+    f.style.top = y + "px";
 
-  <section class="message-section fade-in">
-    <h2>Warm Wishes</h2>
-    <p>Wishing you joy, growth, and new beginnings. May 2025 fill your life with love and success.</p>
+    f.style.transform = `translate(${dx}px, ${dy}px)`;
 
-    <!-- Music Toggle -->
-    <button id="musicBtn" onclick="toggleMusic()">Play Music</button>
-    <audio id="bgMusic" loop>
-      <source src="https://cdn.pixabay.com/download/audio/2022/10/16/audio_4d88afb1c8.mp3" type="audio/mpeg">
-    </audio>
+    setTimeout(() => f.remove(), 1000);
+  }
+}
+setInterval(() => {
+  launchFirework(
+    Math.random() * window.innerWidth,
+    Math.random() * window.innerHeight * 0.6
+  );
+}, 2000);
 
-    <!-- Gift Boxes -->
-    <div class="gift-container">
-      <div class="gift" onclick="openGift(0)"></div>
-      <div class="gift" onclick="openGift(1)"></div>
-      <div class="gift" onclick="openGift(2)"></div>
-    </div>
-    <div class="gift-message" id="giftMsg"></div>
-  </section>
+document.addEventListener("click", (e) =>
+  launchFirework(e.clientX, e.clientY)
+);
 
-  <script>
-    /* Personalized Name */
-    function updateName() {
-      const name = document.getElementById('nameInput').value;
-      document.getElementById('title').innerHTML = `✨ Happy New Year, ${name}! ✨`;
-    }
+/* COUNTDOWN */
+const target = new Date("Jan 1, 2026 00:00:00").getTime();
+setInterval(() => {
+  let now = Date.now();
+  let diff = target - now;
 
-    /* Music */
-    function toggleMusic() {
-      const music = document.getElementById('bgMusic');
-      if (music.paused) music.play(); else music.pause();
-    }
+  if (diff <= 0) {
+    countdown.innerText = "🎉 It's 2026! 🎉";
+    return;
+  }
 
-    /* Gifts */
-    const giftMessages = [
-      "🎁 May this year bring you endless joy!",
-      "✨ Success and happiness are coming your way!",
-      "🌟 You are loved and appreciated. Happy New Year!"
+  let d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  let h = Math.floor(diff / (1000 * 60 * 60)) % 24;
+  let m = Math.floor(diff / (1000 * 60)) % 60;
+  let s = Math.floor(diff / 1000) % 60;
+
+  countdown.innerText = `Countdown: ${d}d ${h}h ${m}m ${s}s`;
+}, 1000);
+
+/* LANTERNS */
+function createLantern() {
+  let img = document.createElement("img");
+  img.src = "https://i.imgur.com/4Y2rHhL.png";
+  img.classList.add("lantern");
+  img.style.left = Math.random() * window.innerWidth + "px";
+  img.style.animationDuration = 8 + Math.random() * 6 + "s";
+  document.body.appendChild(img);
+  setTimeout(() => img.remove(), 13000);
+}
+setInterval(createLantern, 2500);
+
+/* SNOW */
+function createSnow() {
+  let s = document.createElement("div");
+  s.classList.add("snowflake");
+  s.innerText = "❄";
+  s.style.left = Math.random() * window.innerWidth + "px";
+  s.style.fontSize = 10 + Math.random() * 15 + "px";
+  s.style.animationDuration = 5 + Math.random() * 5 + "s";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 11000);
+}
+setInterval(createSnow, 200);
+
+/* FLOATING EMOJIS */
+const emojis = ["🎉", "✨", "🎆", "🎇", "💛", "🥂", "🌟"];
+function floatEmoji() {
+  let e = document.createElement("div");
+  e.classList.add("emoji");
+  e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+  e.style.left = Math.random() * window.innerWidth + "px";
+  e.style.animationDuration = 4 + Math.random() * 4 + "s";
+  document.body.appendChild(e);
+  setTimeout(() => e.remove(), 9000);
+}
+setInterval(floatEmoji, 1200);
+
+/* SHARE BUTTON */
+function shareGreeting() {
+  const url = window.location.href;
+  const message = `🎉 Happy New Year 2026! Check this greeting: ${url}`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: "Happy New Year 2026 🎉",
+      text: message,
+      url: url
+    });
+  } else {
+    navigator.clipboard.writeText(message);
+    alert("Link copied! Share it with your friends 🎉");
+  }
+}
+</script>
+</body>
+</html>
