@@ -1,193 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy New Year 2025 ✨</title>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Firecracker Reveal - Option A</title>
 <style>
-/* -------------------------------------------------- */
-/* GLOBAL */
-/* -------------------------------------------------- */
-body {
-  margin: 0;
-  background: #000;
-  color: white;
-  font-family: "Poppins", sans-serif;
-  overflow-x: hidden;
-  position: relative;
-}
+  body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
-h1 {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 4rem;
-  color: #ffe28a;
-  text-shadow: 0 0 20px #ffcc00;
-  animation: glow 2s infinite alternate ease-in-out;
-}
-@keyframes glow {
-  from { text-shadow: 0 0 10px #ffcc00; }
-  to { text-shadow: 0 0 30px #ffea00; }
-}
+  #firecracker-container {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+  }
 
-/* -------------------------------------------------- */
-/* COUNTDOWN */
-/* -------------------------------------------------- */
-#countdown {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 2rem;
-  letter-spacing: 2px;
-}
+  #fuse-btn {
+    padding: 15px 30px;
+    background: #ff0000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    transition: 0.3s;
+  }
+  #fuse-btn:hover {
+    transform: scale(1.1);
+  }
 
-/* -------------------------------------------------- */
-/* BACKGROUND FIREWORK GIF */
-/* -------------------------------------------------- */
-.bg-gif {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  opacity: 0.25;
-  background: url('https://i.imgur.com/VDz8WcA.gif') center/cover no-repeat;
-}
+  #wish-box {
+    margin-top: 20px;
+    font-size: 26px;
+    opacity: 0;
+    transition: opacity 1.5s;
+  }
 
-/* -------------------------------------------------- */
-/* SPARKLING BORDER */
-/* -------------------------------------------------- */
-.sparkle-border {
-  border: 3px solid rgba(255,255,255,0.3);
-  padding: 20px;
-  margin: 20px auto;
-  width: fit-content;
-  border-radius: 12px;
-  position: relative;
-  animation: sparkle 2s infinite linear;
-}
-@keyframes sparkle {
-  0% { box-shadow: 0 0 10px #fff; }
-  50% { box-shadow: 0 0 25px #ffcc00; }
-  100% { box-shadow: 0 0 10px #fff; }
-}
+  /* FULLSCREEN BOOM FLASH */
+  #flash {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
 
-/* -------------------------------------------------- */
-/* GLOWING YEAR */
-/* -------------------------------------------------- */
-.year-text {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 5rem;
-  font-weight: bold;
-  color: #00eaff;
-  text-shadow: 0 0 20px #00eaff, 0 0 40px #0099ff;
-  animation: pulse 2s infinite alternate;
-}
-@keyframes pulse {
-  from { transform: scale(1); opacity: 0.8; }
-  to { transform: scale(1.1); opacity: 1; }
-}
-
-/* -------------------------------------------------- */
-/* SNOWFALL */
-/* -------------------------------------------------- */
-.snowflake {
-  position: fixed;
-  top: -10px;
-  color: white;
-  font-size: 1rem;
-  animation: fall linear infinite;
-}
-@keyframes fall {
-  0% { transform: translateY(-10px) rotate(0deg); }
-  100% { transform: translateY(110vh) rotate(360deg); }
-}
-
-/* -------------------------------------------------- */
-/* LANTERNS */
-/* -------------------------------------------------- */
-.lantern {
-  position: fixed;
-  bottom: -100px;
-  width: 40px;
-  opacity: 0.8;
-  animation: riseLantern 12s linear infinite;
-}
-@keyframes riseLantern {
-  0% { transform: translateY(0) scale(0.6); }
-  100% { transform: translateY(-120vh) scale(1); opacity: 0; }
-}
-
-/* -------------------------------------------------- */
-/* FIREWORK PARTICLES */
-/* -------------------------------------------------- */
-.firework {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  background: white;
-  border-radius: 50%;
-  animation: explode 1s ease-out forwards;
-}
-@keyframes explode {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(20); opacity: 0; }
-}
-
-/* -------------------------------------------------- */
-/* FLOATING EMOJIS */
-/* -------------------------------------------------- */
-.emoji {
-  position: fixed;
-  bottom: -50px;
-  font-size: 2rem;
-  animation: floatUp 6s ease-in-out infinite;
-}
-@keyframes floatUp {
-  0% { transform: translateY(0) scale(1); opacity: 0; }
-  20% { opacity: 1; }
-  100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
-}
-
-/* -------------------------------------------------- */
-/* SHARE BUTTON */
-/* -------------------------------------------------- */
-.share-btn {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  background: #ffcc00;
-  color: black;
-  padding: 12px 20px;
-  border-radius: 50px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  box-shadow: 0 0 15px #ffcc00;
-  border: none;
-  animation: glowShare 2s infinite alternate;
-}
-@keyframes glowShare {
-  from { box-shadow: 0 0 10px #ffcc00; }
-  to { box-shadow: 0 0 25px #ffffff; }
-}
+  /* Fireworks GIF background */
+  #fireworks-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('fireworks.gif') center/cover no-repeat;
+    opacity: 0;
+    transition: opacity 2s;
+    pointer-events: none;
+  }
 </style>
 </head>
-
 <body>
-<div class="bg-gif"></div>
+<div id="fireworks-bg"></div>
+<div id="flash"></div>
 
-<h1>✨ Happy New Year ✨</h1>
-<div id="countdown"></div>
-<div class="year-text">2025</div>
+<div id="firecracker-container">
+  <button id="fuse-btn">🔥 Light the Fuse</button>
+  <div id="wish-box"></div>
+</div>
 
-<div class="sparkle-border" id="wishBox"></div>
-
-<button class="share-btn" onclick="shareGreeting()">📤 Share</button>
+<audio id="boom-sfx" src="boom.mp3"></audio>
+<audio id="crackle-sfx" src="crackle.mp3"></audio>
 
 <script>
-/* RANDOM WISH */
 const wishes = [
   "May 2026 bring growth, recognition, and new achievements. ✨",
   "Believe in progress, consistency, and yourself. Let this year be the one where you surprise yourself.🎊",
@@ -199,114 +91,38 @@ const wishes = [
   "Here’s to a year filled with laughter, love, and positive surprises. Wishing you courage to chase your dreams and wisdom to enjoy the journey.🎆",
   "Sending love and warmth. Every sunrise in 2026 brings a new chance to grow and succeed. 💛",
   "New adventures are waiting. Challenges are stepping stones—use them to rise higher in 2026.🎆",
-  "A new year, a new chapter. Make it a masterpiece!🎊",
-  "May every challenge turn into opportunity this year. Success, peace & happiness to you 🎉"
+  "A new year, a new chapter. Make it a masterpiece!🎊"
 ];
-document.getElementById("wishBox").innerText =
-  wishes[Math.floor(Math.random() * wishes.length)];
 
-/* AUTO FIREWORKS */
-function launchFirework(x, y) {
-  for (let i = 0; i < 25; i++) {
-    let f = document.createElement("div");
-    f.classList.add("firework");
-    document.body.appendChild(f);
+const button = document.getElementById('fuse-btn');
+const wishBox = document.getElementById('wish-box');
+const fireworksBg = document.getElementById('fireworks-bg');
+const flash = document.getElementById('flash');
+const boomSfx = document.getElementById('boom-sfx');
+const crackleSfx = document.getElementById('crackle-sfx');
 
-    let dx = (Math.random() - 0.5) * 300;
-    let dy = (Math.random() - 0.5) * 300;
+button.addEventListener('click', () => {
+  button.disabled = true;
+  button.textContent = "🔥 Fuse Burning...";
 
-    f.style.left = x + "px";
-    f.style.top = y + "px";
+  setTimeout(() => {
+    flash.style.opacity = 1;
+    boomSfx.play();
 
-    f.style.transform = `translate(${dx}px, ${dy}px)`;
+    setTimeout(() => {
+      flash.style.opacity = 0;
+      fireworksBg.style.opacity = 1;
+      crackleSfx.play();
+    }, 200);
 
-    setTimeout(() => f.remove(), 1000);
-  }
-}
-setInterval(() => {
-  launchFirework(
-    Math.random() * window.innerWidth,
-    Math.random() * window.innerHeight * 0.6
-  );
-}, 2000);
+    setTimeout(() => {
+      const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+      wishBox.textContent = randomWish;
+      wishBox.style.opacity = 1;
+    }, 1500);
 
-document.addEventListener("click", (e) =>
-  launchFirework(e.clientX, e.clientY)
-);
-
-/* COUNTDOWN */
-const target = new Date("Jan 1, 2026 00:00:00").getTime();
-setInterval(() => {
-  let now = Date.now();
-  let diff = target - now;
-
-  if (diff <= 0) {
-    countdown.innerText = "🎉 It's 2026! 🎉";
-    return;
-  }
-
-  let d = Math.floor(diff / (1000 * 60 * 60 * 24));
-  let h = Math.floor(diff / (1000 * 60 * 60)) % 24;
-  let m = Math.floor(diff / (1000 * 60)) % 60;
-  let s = Math.floor(diff / 1000) % 60;
-
-  countdown.innerText = `Countdown: ${d}d ${h}h ${m}m ${s}s`;
-}, 1000);
-
-/* LANTERNS */
-function createLantern() {
-  let img = document.createElement("img");
-  img.src = "https://i.imgur.com/4Y2rHhL.png";
-  img.classList.add("lantern");
-  img.style.left = Math.random() * window.innerWidth + "px";
-  img.style.animationDuration = 8 + Math.random() * 6 + "s";
-  document.body.appendChild(img);
-  setTimeout(() => img.remove(), 13000);
-}
-setInterval(createLantern, 2500);
-
-/* SNOW */
-function createSnow() {
-  let s = document.createElement("div");
-  s.classList.add("snowflake");
-  s.innerText = "❄";
-  s.style.left = Math.random() * window.innerWidth + "px";
-  s.style.fontSize = 10 + Math.random() * 15 + "px";
-  s.style.animationDuration = 5 + Math.random() * 5 + "s";
-  document.body.appendChild(s);
-  setTimeout(() => s.remove(), 11000);
-}
-setInterval(createSnow, 200);
-
-/* FLOATING EMOJIS */
-const emojis = ["🎉", "✨", "🎆", "🎇", "💛", "🥂", "🌟"];
-function floatEmoji() {
-  let e = document.createElement("div");
-  e.classList.add("emoji");
-  e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-  e.style.left = Math.random() * window.innerWidth + "px";
-  e.style.animationDuration = 4 + Math.random() * 4 + "s";
-  document.body.appendChild(e);
-  setTimeout(() => e.remove(), 9000);
-}
-setInterval(floatEmoji, 1200);
-
-/* SHARE BUTTON */
-function shareGreeting() {
-  const url = window.location.href;
-  const message = `🎉 Happy New Year 2026! Check this greeting: ${url}`;
-
-  if (navigator.share) {
-    navigator.share({
-      title: "Happy New Year 2026 🎉",
-      text: message,
-      url: url
-    });
-  } else {
-    navigator.clipboard.writeText(message);
-    alert("Link copied! Share it with your friends 🎉");
-  }
-}
+  }, 2000);
+});
 </script>
 </body>
 </html>
